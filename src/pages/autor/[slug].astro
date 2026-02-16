@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { AUTHORS, BLOG_POSTS } from '../../constants';
+
+export async function getStaticPaths() {
+  return AUTHORS.map(author => ({
+    params: { slug: author.slug },
+    props: { author },
+  }));
+}
+
+const { author } = Astro.props;
+
+// Filter posts by this author
+// Note: We handle both "Miriam Diaz" and "Miriam Díaz Álvarez" just in case normalization isn't perfect yet
+const posts = BLOG_POSTS
+    .filter(post => {
+        if (author.name === "Miriam Díaz Álvarez") {
+            return post.author === "Miriam Díaz Álvarez" || post.author === "Miriam Diaz";
+        }
+        return post.author === author.name;
+    })
+    .sort((a, b) => {
+        const dateA = a.date.split('-').reverse().join('');
+        const dateB = b.date.split('-').reverse().join('');
+        return dateB.localeCompare(dateA);
+    })
+    .filter(post => {
+        const [day, month, year] = post.date.split('-').map(Number);
+        const postDate = new Date(year, month - 1, day);
+        const today = new Date(2026, 1, 16); // Fixed Feb 16, 2026 as per user info
+        return postDate <= today;
+    });
+
+---
+
+<BaseLayout title={`Perfil de ${author.name} | Chikara Nutrition`} description={author.bio}>
+    <Navbar currentPath="/autor/" />
+    
+    <main class="pt-32 pb-24 bg-chikara-paper min-h-screen">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           
+           <!-- Author Header Profile -->
+           <div class="bg-white border border-gray-200 shadow-xl overflow-hidden mb-16">
+               <div class="md:flex">
+                    <div class="md:w-1/3 relative h-96 md:h-auto overflow-hidden bg-chikara-ink">
+                        <img src={author.secondAuthorImage} alt={author.name} class="w-full h-full object-cover grayscale contrast-125 opacity-80" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-chikara-ink/80 via-transparent to-transparent md:hidden"></div>
+                        <div class="absolute bottom-6 left-6 text-white md:hidden">
+                            <h1 class="text-4xl font-display font-bold uppercase">{author.name}</h1>
+                            <p class="text-chikara-red font-bold uppercase tracking-widest text-sm">{author.role}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-2/3 p-8 md:p-16 flex flex-col justify-center">
+                        <div class="hidden md:block mb-6">
+                            <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">Sensei</span>
+                            <h1 class="text-6xl font-display font-bold text-chikara-ink uppercase mt-2">{author.name}</h1>
+                            <div class="flex flex-wrap items-center gap-4 mt-2 mb-4">
+                                <p class="text-chikara-stone/60 font-bold uppercase tracking-widest text-lg">{author.role}</p>
+                                <span class="hidden md:block w-2 h-2 rounded-full bg-chikara-red"></span>
+                                <p class="text-chikara-stone/40 font-serif italic text-base">{author.study}</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-600 text-xl font-serif italic leading-relaxed mb-10 border-l-4 border-chikara-red pl-8">
+                            "{author.bio}"
+                        </p>
+                        
+                        {author.stats && (
+                             <div class="grid grid-cols-3 gap-8 border-y border-gray-100 py-8">
+                                 {author.stats.map(stat => (
+                                     <div>
+                                         <span class="block text-3xl font-display font-bold text-chikara-ink uppercase">{stat.value}</span>
+                                         <span class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">{stat.label}</span>
+                                     </div>
+                                 ))}
+                             </div>
+                        )}
+                   </div>
+               </div>
+           </div>
+
+           <!-- Author's Philosophy -->
+           <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
+               <div class="order-2 md:order-1">
+                   <h2 class="text-4xl font-display font-bold text-chikara-ink uppercase mb-8">La Filosofía del <span class="text-chikara-red">{author.name.split(' ')[0]}</span></h2>
+                   <div class="space-y-6 text-gray-600 font-serif text-lg leading-relaxed">
+                       <p>
+                           {author.name === "Alejandro Pombo" ? 
+                            "Para Alejandro, el entrenamiento no es simplemente mover peso. Es una forma de meditación en movimiento, una lucha constante contra la parte de nosotros que quiere rendirse." :
+                            "Miriam entiende que la nutrición no es una suma de calorías, sino de información biológica. Su enfoque se centra en la pureza y la eficacia de cada nutriente."}
+                       </p>
+                       <p>
+                           Desde la selección de materias primas hasta el diseño de planes de entrenamiento, cada detalle en Chikara pasa por su filtro de calidad. No buscamos el crecimiento rápido, buscamos la base más sólida posible.
+                       </p>
+                   </div>
+               </div>
+                <div class="order-1 md:order-2 h-96 bg-chikara-ink flex items-center justify-center relative overflow-hidden group border border-white/5">
+                    <div class="absolute inset-0 grayscale opacity-40 group-hover:scale-110 transition-transform duration-700">
+                        <img src={author.authorImage} alt={author.name} class="w-full h-full object-cover" />
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-chikara-ink via-chikara-ink/40 to-transparent"></div>                    
+                    <div class="absolute inset-0 p-10 flex flex-col justify-between z-20">
+                        <div class="flex justify-end gap-3">
+                            {author.instagram && (
+                                <a href={author.instagram} target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-chikara-red transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                                </a>
+                            )}
+                            {author.linkedin && (
+                                <a href={author.linkedin} target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-chikara-red transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                                </a>
+                            )}
+                            {author.facebook && (
+                                <a href={author.facebook} target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-chikara-red transition-all">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                                </a>
+                            )}
+                        </div>
+                        
+                        <div class="bg-white p-6 shadow-2xl border-l-4 border-chikara-red transform group-hover:-translate-y-2 transition-transform">
+                            <p class="text-[10px] font-black uppercase tracking-[0.3em] text-chikara-stone/40 mb-1">Chikara Nutrition Expert</p>
+                            <p class="font-display font-bold text-xl text-chikara-ink uppercase mb-2">{author.name}</p>
+                            <div class="h-[2px] w-8 bg-chikara-red mb-3"></div>
+                            <p class="text-xs font-serif italic text-gray-500">{author.study}</p>
+                        </div>
+                    </div>
+                </div>
+           </div>
+
+           <!-- Author's Posts -->
+           <div>
+               <div class="flex justify-between items-end mb-12 border-b-2 border-gray-100 pb-6">
+                   <h3 class="text-3xl font-display font-bold text-chikara-ink uppercase">Artículos de {author.name.split(' ')[0]}</h3>
+                   <span class="text-gray-400 font-jp text-xl">知恵</span>
+               </div>
+               
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                   {posts.map(post => (
+                        <a href={`/blog/${post.slug}/`} class="group flex flex-col md:flex-row bg-white border border-gray-100 hover:shadow-xl transition-all duration-300">
+                           <div class="md:w-1/3 h-48 md:h-auto overflow-hidden">
+                               <img src={post.image} alt={post.title} class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                           </div>
+                           <div class="md:w-2/3 p-6 flex flex-col justify-center">
+                               <span class="text-chikara-red text-[10px] font-bold uppercase tracking-widest mb-2">{post.date}</span>
+                               <h4 class="text-xl font-display font-bold text-chikara-ink uppercase group-hover:text-chikara-red transition-colors duration-300 line-clamp-2">{post.title}</h4>
+                               <div class="mt-4 flex items-center text-xs font-bold uppercase tracking-widest text-chikara-stone group-hover:translate-x-2 transition-transform">
+                                   Leer Pergamino <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1"><path d="m9 18 6-6-6-6"></path></svg>
+                               </div>
+                           </div>
+                        </a>
+                   ))}
+                   {posts.length === 0 && (
+                       <p class="text-gray-400 font-serif italic text-lg">Este sensei todavía está preparando su próximo pergamino de sabiduría.</p>
+                   )}
+               </div>
+           </div>
+
+       </div>
+    </main>
+
+    <Footer />
+</BaseLayout>

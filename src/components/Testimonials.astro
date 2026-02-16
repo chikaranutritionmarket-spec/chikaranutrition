@@ -1,0 +1,60 @@
+---
+const displayTestimonials = [
+  {
+    id: 1,
+    name: "Gloria Castro",
+    role: "Reseña de Google",
+    text: "Muy buena tienda, con productos de calidad y muy buena atención."
+  },
+  {
+    id: 2,
+    name: "Luis Mendez",
+    role: "Reseña de Google",
+    text: "Los mejores productos de suplementación, calidad y precio y el trato insuperable."
+  },
+  {
+    id: 3,
+    name: "Alex Alonso",
+    role: "Reseña de Google",
+    text: "Nueva tienda de suplementación deportiva en Ponferrada. Está dentro del gimnasio Basic-Fit, pero no tienes que ser socio para entrar. Buenos precios, buen trato y asesoramiento. Sin duda para repetir."
+  }
+];
+
+---
+<section class="py-24 bg-stone-50 relative overflow-hidden">
+  <!-- Background decoration: Large Circle (Enso) -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] border-[20px] border-gray-200 rounded-full opacity-40 pointer-events-none transform rotate-45 mask-image-brush"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-16">
+      <span class="text-chikara-red font-display font-bold tracking-[0.3em] uppercase text-sm">Comunidad</span>
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-chikara-ink uppercase mt-2">
+        Voces del Clan
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {displayTestimonials.map((t) => (
+        <div class="bg-white p-8 border border-gray-100 shadow-sm relative group hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+          <div class="absolute top-0 left-0 w-full h-1 bg-gray-100 group-hover:bg-chikara-red transition-colors duration-300"></div>
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-200 mb-6 group-hover:text-chikara-red/20 transition-colors"><path d="M3 21c3 0 7-1 7-8V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h4c0 3.5-1 4.5-4.5 4.5L3 21z"></path><path d="M13 21c3 0 7-1 7-8V5c0-1.1-.9-2-2-2h-3c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h4c0 3.5-1 4.5-4.5 4.5L13 21z"></path></svg>
+          
+          <p class="text-gray-600 font-serif italic text-lg leading-relaxed mb-6">
+            "{t.text}"
+          </p>
+          
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-chikara-ink text-white flex items-center justify-center font-bold font-display rounded-sm">
+                {t.name.charAt(0)}
+            </div>
+            <div>
+                <h4 class="font-bold text-chikara-ink uppercase tracking-wide text-sm">{t.name}</h4>
+                <p class="text-chikara-red text-xs uppercase tracking-wider font-bold">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

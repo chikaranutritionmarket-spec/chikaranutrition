@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import FAQ from '../../components/FAQ.astro';
+
+const CATEGORIES = [
+  {
+    id: 1,
+    name: "Proteínas",
+    jpName: "タンパク質",
+    description: "La base de la reconstrucción muscular. Disponemos de aislados (Isolate), concentrados (Whey) e hidrolizados de la más alta pureza biológica.",
+    brands: ["Amix", "LifePro", "BioTechUSA", "Optimum Nutrition"],
+    image: "/imagenes/proteinas.webp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"></path><path d="m10 10 5.5 5.5"></path><path d="m3 21 2.5-2.5"></path><path d="m3 21 2.5-2.5"></path><path d="m18.5 5.5 2.5-2.5"></path><path d="m11 21 2-2"></path><path d="m21 11-2 2"></path><path d="m22 2-5 5"></path><path d="m7 17-5 5"></path></svg>`
+  },
+  {
+    id: 2,
+    name: "Creatina & Fuerza",
+    jpName: "力",
+    description: "Potencia explosiva para romper tus límites. Creatina Monohidrato Creapure® para asegurar la máxima absorción y rendimiento.",
+    brands: ["Chikara Labs", "Amix", "Zoomad Labs"],
+    image: "/imagenes/creatina.webp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.71V21h6.29l1.62-1.62L3.62 11.09 4 14.71z"></path><path d="M14.71 4l1.62 1.62L4.71 17.25l-1.62-1.62L14.71 4z"></path><path d="M21 4.71L19.38 3.09 7.75 14.71l1.62 1.62L21 4.71z"></path><path d="M16.29 4L4.71 15.59 4 19.41l3.82-.71L19.41 7.12 16.29 4z"></path></svg>`
+  },
+  {
+    id: 3,
+    name: "Salud & Vitaminas",
+    jpName: "健康",
+    description: "Un guerrero enfermo no puede luchar. Multivitamínicos, Omega-3, ZMA y protectores articulares para mantener tu armadura intacta.",
+    brands: ["LifePro", "Now Foods", "Solaray"],
+    image: "/imagenes/vitaminas-minerales.webp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>`
+  },
+  {
+    id: 4,
+    name: "Pre-Entreno",
+    jpName: "エネルギー",
+    description: "Enciende la mecha. Fórmulas con estimulantes y nootrópicos para una concentración láser y energía inagotable durante la batalla.",
+    brands: ["Cellucor", "Chikara Labs", "Zoomad"],
+    image: "/imagenes/preentrenos.webp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" x2="6" y1="2" y2="4"></line><line x1="10" x2="10" y1="2" y2="4"></line><line x1="14" x2="14" y1="2" y2="4"></line></svg>`
+  },
+  {
+    id: 5,
+    name: "Snacks Saludables",
+    jpName: "スナック",
+    description: "Placer sin culpa. Barritas proteicas, cremas de arroz, salsas cero calorías y caprichos fit para mantener la dieta sin sufrir.",
+    brands: ["LifePro Fit Food", "Max Protein", "Servivita"],
+    image: "/imagenes/snacks.webp",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 15.5v.01"></path><path d="M12 12v.01"></path><path d="M11 17v.01"></path><path d="M7 14v.01"></path></svg>`
+  }
+];
+---
+
+<BaseLayout title="El Arsenal | Chikara Nutrition" description="Explora nuestras herramientas para la transformación física: suplementación de élite seleccionada por expertos.">
+    <Navbar currentPath="/arsenal/" forceTransparent={true} />
+    
+    <main class="bg-chikara-paper min-h-screen">
+        <!-- Hero Section (Estilo Premium) -->
+        <div class="relative min-h-[60vh] md:min-h-[70vh] flex items-center bg-chikara-ink text-white overflow-hidden py-24 md:py-0">
+             <!-- Background Image with Overlay -->
+             <div class="absolute inset-0">
+                <img 
+                    src="/imagenes/chikara-nutrition-tienda-ponferrada.webp" 
+                    alt="Chikara Arsenal" 
+                    class="w-full h-full object-cover grayscale opacity-60 mix-blend-luminosity"
+                />
+                <div class="absolute inset-0 bg-gradient-to-r from-chikara-ink/95 via-chikara-ink/70 to-transparent"></div>
+             </div>
+             
+             <!-- Decorative Kanji -->
+             <div class="absolute right-[-5%] md:right-0 top-1/2 -translate-y-1/2 text-[15rem] xs:text-[20rem] md:text-[30rem] text-white/5 font-jp font-black leading-none pointer-events-none select-none">
+                武器
+             </div>
+
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-12 md:pt-20">
+                <div class="max-w-2xl">
+                    <span class="text-chikara-red font-display font-bold tracking-[0.5em] uppercase block mb-4 animate-fade-in">Herramientas de Élite</span>
+                    <h1 class="text-6xl md:text-8xl font-display font-bold uppercase leading-[0.9] mb-8 animate-slide-up">
+                        El <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-chikara-red to-white">Arsenal</span>
+                    </h1>
+                    <div class="w-20 h-1 bg-chikara-red mb-8"></div>
+                    <p class="text-xl text-gray-300 font-light leading-relaxed max-w-xl italic font-serif">
+                        No solo vendemos productos. Seleccionamos las armas necesarias para que cada guerrero conquiste su propio destino.
+                    </p>
+                </div>
+             </div>
+        </div>
+
+        <!-- Arsenal Categories Section (Homepage Style) -->
+        <section class="py-24 bg-chikara-paper relative">
+          <!-- Decorative Kanji background -->
+          <div class="absolute top-10 left-0 text-[15rem] md:text-[20rem] text-gray-200 font-jp font-black leading-none pointer-events-none -translate-x-1/4 select-none opacity-50">
+            武器
+          </div>
+
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-gray-200 pb-6">
+                <div>
+                    <h2 class="text-chikara-red font-display font-bold text-lg tracking-[0.4em] uppercase mb-2">Selección Élite</h2>
+                    <h3 class="text-4xl md:text-6xl font-display font-bold text-chikara-ink uppercase leading-none">
+                        Categorías del Clan
+                    </h3>
+                </div>
+                <div class="text-right hidden md:block">
+                    <p class="text-gray-400 font-jp text-xl">すべてを見る</p>
+                    <p class="text-chikara-stone text-sm tracking-widest uppercase font-bold">Pureza y Potencia</p>
+                </div>
+            </div>
+
+            <!-- Categories Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {CATEGORIES.map((cat) => (
+                <div 
+                    class="group arsenal-card relative h-80 bg-black cursor-pointer overflow-hidden border border-gray-800 hover:border-chikara-red transition-all duration-300 shadow-lg"
+                    data-category={JSON.stringify(cat)}
+                >
+                    <div class="absolute inset-0 opacity-40 group-hover:opacity-20 transition-opacity duration-500">
+                        <img src={cat.image} alt={cat.name} class="w-full h-full object-cover grayscale" />
+                    </div>
+                    
+                    <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                        <div class="flex justify-between items-start mb-auto">
+                            <span class="text-4xl text-white/20 font-jp font-bold group-hover:text-chikara-red transition-colors duration-300">{cat.jpName}</span>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-2xl font-display font-bold text-white uppercase mb-2 tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+                                {cat.name}
+                            </h4>
+                            <div class="h-[2px] w-0 bg-chikara-red group-hover:w-12 transition-all duration-500 mb-2"></div>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest flex items-center gap-1 group-hover:text-white transition-colors">
+                                Ver detalles <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+              ))}
+              
+              <!-- Personal Advisor Card -->
+              <a href="/contacto/" class="group relative h-80 bg-stone-100 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-chikara-ink cursor-pointer transition-colors px-6">
+                 <div class="text-center">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:bg-chikara-red group-hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <p class="font-display font-bold text-2xl text-chikara-ink uppercase mb-2">Asesoría Samurái</p>
+                    <p class="text-gray-500 font-serif italic mb-6">¿Dudas sobre qué armas elegir? Consúltanos directamente.</p>
+                    <span class="bg-chikara-ink text-white px-6 py-3 uppercase tracking-widest text-xs font-bold group-hover:bg-chikara-red transition-colors inline-block">
+                        Contactar
+                    </span>
+                 </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Modal Overlay -->
+          <div id="category-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+              
+              <div class="bg-white w-full max-w-2xl relative z-[101] shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]">
+                  <button id="close-modal" class="absolute top-4 right-4 bg-white/90 p-2 text-chikara-ink hover:text-chikara-red transition-colors z-20 rounded-full">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                  </button>
+
+                  <div class="w-full md:w-2/5 h-48 md:h-auto relative">
+                      <img id="modal-image" src="" alt="" class="w-full h-full object-cover grayscale" />
+                      <div class="absolute inset-0 bg-chikara-red/20 mix-blend-multiply"></div>
+                      <div id="modal-jp-name" class="absolute bottom-4 left-4 text-6xl text-white/80 font-jp font-black"></div>
+                  </div>
+
+                  <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col">
+                      <div class="mb-6">
+                          <span class="text-chikara-red text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Categoría</span>
+                          <h2 id="modal-title" class="text-3xl font-display font-bold text-chikara-ink uppercase"></h2>
+                      </div>
+                      
+                      <p id="modal-description" class="text-gray-600 font-serif text-lg leading-relaxed mb-8 flex-grow"></p>
+
+                      <div class="mb-8">
+                          <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-2">Marcas Disponibles</h4>
+                          <div id="modal-brands" class="flex flex-wrap gap-2"></div>
+                      </div>
+
+                      <a href="/contacto/" class="w-full bg-chikara-ink text-white py-4 font-display font-bold uppercase tracking-widest text-center hover:bg-chikara-red transition-colors flex justify-center items-center gap-2">
+                          Consultar Disponibilidad <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                      </a>
+                  </div>
+              </div>
+          </div>
+        </section>
+
+        <!-- Calidad Extra Section -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?q=80&w=2069" alt="Quality Control" class="w-full grayscale border-2 border-chikara-red/20 shadow-xl" />
+                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-chikara-ink flex items-center justify-center text-white border-4 border-white shadow-2xl">
+                             <div class="text-center">
+                                 <span class="font-jp text-5xl block mb-2">誠</span>
+                                 <span class="text-[0.6rem] font-bold uppercase tracking-[0.3em]">Pureza Total</span>
+                             </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <h2 class="text-4xl md:text-5xl font-display font-bold text-chikara-ink uppercase leading-tight">
+                            Forjado bajo <span class="text-chikara-red">Estándares de Élite</span>
+                        </h2>
+                        <p class="text-gray-600 text-lg font-serif">
+                            En el Arsenal de Chikara, no hay espacio para la mediocridad. Cada lote de productos pasa por un estricto proceso de selección donde solo sobreviven aquellos que cumplen con nuestra filosofía de pureza y efectividad.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex gap-6 items-start">
+                                <div>
+                                    <h4 class="font-display font-bold text-xl uppercase text-chikara-ink mb-1">Certificación Creapure®</h4>
+                                    <p class="text-sm text-gray-500 font-light italic">Creatina de fabricación alemana para asegurar fuerza explosiva sin impurezas.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div>
+                                    <h4 class="font-display font-bold text-xl uppercase text-chikara-ink mb-1">Fórmulas Transparentes</h4>
+                                    <p class="text-sm text-gray-500 font-light italic">Sin rellenos innecesarios. Transparencia total del etiquetado para el guerrero exigente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <FAQ />
+
+    </main>
+
+    <Footer />
+</BaseLayout>
+
+<script is:inline>
+    const modal = document.getElementById('category-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('close-modal');
+    const cards = document.querySelectorAll('.arsenal-card');
+
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalImage = document.getElementById('modal-image');
+    const modalJpName = document.getElementById('modal-jp-name');
+    const modalBrands = document.getElementById('modal-brands');
+
+    function openModal(cat) {
+        modalTitle.textContent = cat.name;
+        modalDescription.textContent = cat.description;
+        modalImage.src = cat.image;
+        modalImage.alt = cat.name;
+        modalJpName.textContent = cat.jpName;
+        
+        modalBrands.innerHTML = '';
+        cat.brands.forEach(brand => {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 bg-stone-100 text-chikara-stone text-xs font-bold uppercase tracking-wide';
+            span.textContent = brand;
+            modalBrands.appendChild(span);
+        });
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const catData = card.getAttribute('data-category');
+            if (catData) {
+                const cat = JSON.parse(catData);
+                openModal(cat);
+            }
+        });
+    });
+
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+</script>

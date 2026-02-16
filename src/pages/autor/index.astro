@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { AUTHORS } from '../../constants';
+
+const title = "Nuestros Expertos | Chikara Nutrition";
+const description = "Conoce al equipo de expertos detrás de Chikara Nutrition. Senseis de la nutrición y el rendimiento deportivo.";
+---
+
+<BaseLayout title={title} description={description}>
+    <Navbar currentPath="/autor/" />
+    
+    <main class="pt-32 pb-24 bg-chikara-paper min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">El Equipo</span>
+                <h1 class="text-6xl font-display font-bold text-chikara-ink uppercase mt-2">Nuestros <span class="text-chikara-red">Senseis</span></h1>
+                <div class="w-24 h-1 bg-chikara-red mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {AUTHORS.map(author => (
+                    <div class="bg-white border border-gray-200 shadow-xl overflow-hidden group">
+                        <div class="md:flex h-full">
+                            <div class="md:w-1/2 relative overflow-hidden h-96 md:h-auto">
+                                <img 
+                                    src={author.authorImage} 
+                                    alt={author.name} 
+                                    class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-110 transition-transform duration-700" 
+                                />
+                                <div class="absolute inset-0 bg-chikara-ink/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                            </div>
+                            
+                            <div class="md:w-1/2 p-8 flex flex-col justify-center">
+                                <h2 class="text-3xl font-display font-bold text-chikara-ink uppercase mb-2">{author.name}</h2>
+                                <p class="text-chikara-red font-bold uppercase tracking-widest text-xs mb-6">{author.role}</p>
+                                
+                                <p class="text-gray-600 font-serif leading-relaxed mb-8 line-clamp-4 italic">
+                                    "{author.bio}"
+                                </p>
+                                
+                                <a 
+                                    href={`/autor/${author.slug}/`} 
+                                    class="inline-block bg-chikara-ink text-white px-8 py-3 font-bold uppercase text-xs tracking-[0.2em] hover:bg-chikara-red transition-colors text-center"
+                                >
+                                    Ver Perfil Completo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            <!-- Call to Action -->
+            <div class="mt-24 p-12 bg-chikara-ink text-white relative overflow-hidden">
+                <div class="absolute right-0 top-0 text-white/5 text-9xl font-jp font-black select-none -translate-y-1/2">
+                    協力
+                </div>
+                <div class="relative z-10 max-w-2xl">
+                    <h3 class="text-3xl font-display font-bold uppercase mb-4">¿Buscas Asesoramiento Personalizado?</h3>
+                    <p class="text-gray-400 font-serif text-lg mb-8">Nuestros expertos están listos para ayudarte a trazar tu propio camino hacia la excelencia física.</p>
+                    <a href="/contacto/" class="text-chikara-red font-bold uppercase tracking-widest hover:text-white transition-colors">Contacta con un Sensei →</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>

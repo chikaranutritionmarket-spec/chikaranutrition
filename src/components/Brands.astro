@@ -1,0 +1,53 @@
+---
+const brands = [
+  "226ERS", "ALL NUTRITION", "AMIX", "BAREBELLS", "BIG", "BSN", "C4 ENERGY", 
+  "DRASANVI", "ELEVEN FIT", "ENCORE", "HI PROTEIN", "HIMALAYA", "LIFE PRO", 
+  "MAX PROTEIN", "MONSTER", "NUTRINOVEX", "OPTIMUM NUTRITION", "OXYPRO", 
+  "PLAMECA", "QNT", "QUAMTRAX", "SCIENTIFFIC NUTRITION", "SERVIVITA", 
+  "VITADULCE", "ZOOMAD"
+];
+
+// Duplicate brands to ensure continuous scrolling
+const scrollingBrands = [...brands, ...brands, ...brands];
+---
+
+<section class="py-16 border-y border-gray-100 bg-white overflow-hidden relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+    <div class="text-center">
+        <h3 class="text-xs font-bold uppercase tracking-[0.4em] text-gray-400">Nuestras Alianzas Estratégicas</h3>
+    </div>
+  </div>
+  
+  <div class="relative flex overflow-x-hidden group">
+    <div class="py-4 animate-marquee-right whitespace-nowrap flex items-center gap-16">
+      {scrollingBrands.map((brand) => (
+        <div class="inline-block flex-shrink-0">
+          <h4 class="text-2xl md:text-4xl font-display font-black text-gray-200 hover:text-chikara-red transition-colors duration-300 uppercase tracking-tighter cursor-default select-none">
+            {brand}
+          </h4>
+        </div>
+      ))}
+    </div>
+
+    <!-- Gradient overlays for smooth fade -->
+    <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10"></div>
+    <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10"></div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  .animate-marquee-right {
+    animation: marquee-right 60s linear infinite;
+    width: max-content;
+  }
+
+  /* Pause on hover for better user interaction */
+  .group:hover .animate-marquee-right {
+    animation-play-state: paused;
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import { BLOG_POSTS } from '../constants';
+
+const latestPosts = BLOG_POSTS
+  .filter(post => {
+    const [d, m, y] = post.date.split('-').map(Number);
+    const postDate = new Date(y, m - 1, d);
+    const now = new Date('2026-02-16');
+    return postDate <= now;
+  })
+  .sort((a, b) => {
+    const [da, ma, ya] = a.date.split('-').map(Number);
+    const [db, mb, yb] = b.date.split('-').map(Number);
+    return new Date(yb, mb - 1, db).getTime() - new Date(ya, ma - 1, da).getTime();
+  })
+  .slice(0, 3);
+---
+<section class="py-24 bg-white relative overflow-hidden">
+    <!-- Decorative Element -->
+    <div class="absolute top-20 right-0 text-[12rem] text-gray-100 font-jp font-black leading-none pointer-events-none z-0 select-none">
+        知恵
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-chikara-red font-display font-bold text-lg tracking-[0.4em] uppercase mb-2">Blog</h2>
+            <h3 class="text-4xl md:text-6xl font-display font-bold text-chikara-ink uppercase leading-none mb-6">
+                Últimos Pergaminos
+            </h3>
+            <div class="w-24 h-1 bg-chikara-red mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {latestPosts.map((post) => (
+                <article class="group bg-chikara-paper border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+                    <div class="relative h-64 overflow-hidden">
+                        <img 
+                            src={post.image} 
+                            alt={post.title} 
+                            class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                        />
+                        <div class="absolute inset-0 bg-chikara-ink/20 group-hover:bg-transparent transition-colors"></div>
+                    </div>
+
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div class="flex items-center gap-4 text-[10px] text-gray-400 mb-4 font-mono uppercase tracking-widest">
+                            <span>{post.date}</span>
+                            <span class="w-1 h-1 bg-chikara-red rounded-full"></span>
+                            <span>{post.readTime}</span>
+                        </div>
+
+                        <h4 class="text-xl font-display font-bold text-chikara-ink mb-4 leading-tight group-hover:text-chikara-red transition-colors">
+                            <a href={`/blog/${post.slug}/`}>{post.title}</a>
+                        </h4>
+
+                        <p class="text-gray-500 text-sm mb-6 font-light leading-relaxed flex-1 line-clamp-3">
+                            {post.excerpt}
+                        </p>
+
+                        <a 
+                            href={`/blog/${post.slug}/`}
+                            class="text-chikara-red font-bold uppercase text-[10px] tracking-[0.2em] flex items-center gap-2 group/btn mt-auto pt-6 border-t border-gray-100"
+                        >
+                            Leer Más <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover/btn:translate-x-1"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </a>
+                    </div>
+                </article>
+            ))}
+        </div>
+
+        <div class="mt-16 text-center">
+            <a href="/blog/" class="inline-block border-2 border-chikara-ink px-10 py-4 font-display font-bold uppercase tracking-widest hover:bg-chikara-ink hover:text-white transition-all">
+                Ver Todo el Blog
+            </a>
+        </div>
+    </div>
+</section>

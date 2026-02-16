@@ -1,0 +1,188 @@
+---
+const CATEGORIES = [
+  {
+    id: 1,
+    name: "Proteínas",
+    jpName: "タンパク質",
+    description: "La base de la reconstrucción muscular. Disponemos de aislados (Isolate), concentrados (Whey) e hidrolizados de la más alta pureza biológica.",
+    brands: ["Amix", "LifePro", "BioTechUSA", "Optimum Nutrition"],
+    image: "/imagenes/proteinas.webp"
+  },
+  {
+    id: 2,
+    name: "Creatina & Fuerza",
+    jpName: "力",
+    description: "Potencia explosiva para romper tus límites. Creatina Monohidrato Creapure® para asegurar la máxima absorción y rendimiento.",
+    brands: ["Chikara Labs", "Amix", "Zoomad Labs"],
+    image: "/imagenes/creatina.webp"
+  },
+  {
+    id: 3,
+    name: "Salud & Vitaminas",
+    jpName: "健康",
+    description: "Un guerrero enfermo no puede luchar. Multivitamínicos, Omega-3, ZMA y protectores articulares para mantener tu armadura intacta.",
+    brands: ["LifePro", "Now Foods", "Solaray"],
+    image: "/imagenes/vitaminas-minerales.webp"
+  },
+  {
+    id: 4,
+    name: "Pre-Entreno",
+    jpName: "エネルギー",
+    description: "Enciende la mecha. Fórmulas con estimulantes y nootrópicos para una concentración láser y energía inagotable durante la batalla.",
+    brands: ["Cellucor", "Chikara Labs", "Zoomad"],
+    image: "/imagenes/preentrenos.webp"
+  },
+  {
+    id: 5,
+    name: "Snacks Saludables",
+    jpName: "スナック",
+    description: "Placer sin culpa. Barritas proteicas, cremas de arroz, salsas cero calorías y caprichos fit para mantener la dieta sin sufrir.",
+    brands: ["LifePro Fit Food", "Max Protein", "Servivita"],
+    image: "/imagenes/snacks.webp"
+  }
+];
+---
+<section id="arsenal" class="py-24 bg-chikara-paper relative">
+  <!-- Decorative Kanji background -->
+  <div class="absolute top-10 left-0 text-[15rem] md:text-[20rem] text-gray-200 font-jp font-black leading-none pointer-events-none -translate-x-1/4 select-none opacity-50">
+    武器
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b-2 border-gray-200 pb-6">
+        <div>
+            <h2 class="text-chikara-red font-display font-bold text-lg tracking-[0.4em] uppercase mb-2">Categorías</h2>
+            <h3 class="text-4xl md:text-6xl font-display font-bold text-chikara-ink uppercase leading-none">
+                El Arsenal
+            </h3>
+        </div>
+        <div class="text-right hidden md:block">
+            <p class="text-gray-400 font-jp text-xl">すべてを見る</p>
+            <p class="text-chikara-stone text-sm tracking-widest uppercase font-bold">Explora por tipo</p>
+        </div>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {CATEGORIES.map((cat) => (
+        <div 
+            class="group arsenal-card relative h-80 bg-black cursor-pointer overflow-hidden border border-gray-800 hover:border-chikara-red transition-all duration-300 shadow-lg"
+            data-category={JSON.stringify(cat)}
+        >
+            <!-- Image Background -->
+            <div class="absolute inset-0 opacity-40 group-hover:opacity-20 transition-opacity duration-500">
+                <img src={cat.image} alt={cat.name} class="w-full h-full object-cover grayscale" />
+            </div>
+            
+            <!-- Content -->
+            <div class="absolute inset-0 p-8 flex flex-col justify-end">
+                <div class="flex justify-between items-start mb-auto">
+                    <span class="text-4xl text-white/20 font-jp font-bold group-hover:text-chikara-red transition-colors duration-300">{cat.jpName}</span>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl font-display font-bold text-white uppercase mb-2 tracking-wide group-hover:translate-x-2 transition-transform duration-300">
+                        {cat.name}
+                    </h4>
+                    <div class="h-[2px] w-0 bg-chikara-red group-hover:w-12 transition-all duration-500 mb-2"></div>
+                    <span class="text-xs text-gray-400 uppercase tracking-widest flex items-center gap-1 group-hover:text-white transition-colors">
+                        Ver detalles
+                    </span>
+                </div>
+            </div>
+        </div>
+      ))}
+      
+      <!-- "See All" Card -->
+      <a href="/contacto/" class="group relative h-80 bg-stone-100 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-chikara-ink cursor-pointer transition-colors">
+         <div class="text-center p-6">
+            <p class="font-display font-bold text-2xl text-chikara-ink uppercase mb-2">¿Buscas algo más?</p>
+            <p class="text-gray-500 font-serif italic mb-6">Contáctanos para pedidos especiales</p>
+            <span class="bg-chikara-ink text-white px-6 py-3 uppercase tracking-widest text-xs font-bold group-hover:bg-chikara-red transition-colors inline-block">
+                Contactar
+            </span>
+         </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div id="category-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+      <div id="modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+      
+      <div class="bg-white w-full max-w-2xl relative z-[101] shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]">
+          <button id="close-modal" class="absolute top-4 right-4 bg-white/90 p-2 text-chikara-ink hover:text-chikara-red transition-colors z-20 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+          </button>
+
+          <!-- Modal Image Side -->
+          <div class="w-full md:w-2/5 h-48 md:h-auto relative">
+              <img id="modal-image" src="" alt="" class="w-full h-full object-cover grayscale" />
+              <div class="absolute inset-0 bg-chikara-red/20 mix-blend-multiply"></div>
+              <div id="modal-jp-name" class="absolute bottom-4 left-4 text-6xl text-white/80 font-jp font-black"></div>
+          </div>
+
+          <!-- Modal Content Side -->
+          <div class="w-full md:w-3/5 p-8 md:p-10 flex flex-col">
+              <div class="mb-6">
+                  <span class="text-chikara-red text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Categoría</span>
+                  <h2 id="modal-title" class="text-3xl font-display font-bold text-chikara-ink uppercase"></h2>
+              </div>
+              
+              <p id="modal-description" class="text-gray-600 font-serif text-lg leading-relaxed mb-8 flex-grow"></p>
+
+              <div class="mb-2 flex-grow">
+                  <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-2">Marcas Disponibles</p>
+                  <div id="modal-brands" class="flex flex-wrap gap-2"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<script is:inline>
+    const modal = document.getElementById('category-modal');
+    const backdrop = document.getElementById('modal-backdrop');
+    const closeBtn = document.getElementById('close-modal');
+    const cards = document.querySelectorAll('.arsenal-card');
+
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalImage = document.getElementById('modal-image');
+    const modalJpName = document.getElementById('modal-jp-name');
+    const modalBrands = document.getElementById('modal-brands');
+
+    function openModal(cat) {
+        modalTitle.textContent = cat.name;
+        modalDescription.textContent = cat.description;
+        modalImage.src = cat.image;
+        modalImage.alt = cat.name;
+        modalJpName.textContent = cat.jpName;
+        
+        modalBrands.innerHTML = '';
+        cat.brands.forEach(brand => {
+            const span = document.createElement('span');
+            span.className = 'px-3 py-1 bg-stone-100 text-chikara-stone text-xs font-bold uppercase tracking-wide';
+            span.textContent = brand;
+            modalBrands.appendChild(span);
+        });
+
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const cat = JSON.parse(card.dataset.category);
+            openModal(cat);
+        });
+    });
+
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+</script>

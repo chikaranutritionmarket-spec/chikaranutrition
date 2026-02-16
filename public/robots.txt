@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chikaranutrition.es/sitemap-index.xml

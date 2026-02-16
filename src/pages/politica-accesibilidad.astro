@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Política de Accesibilidad | Chikara Nutrition";
+const description = "Compromiso de Chikara Nutrition con la accesibilidad web.";
+---
+
+<BaseLayout title={title} description={description}>
+    <Navbar currentPath="/politica-accesibilidad/" />
+    
+    <main class="pt-32 pb-24 bg-chikara-paper min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Decorative Background Kanji -->
+            <div class="absolute -left-20 bottom-0 text-[15rem] text-gray-200 font-jp font-black leading-none pointer-events-none z-0 select-none opacity-40">
+                通
+            </div>
+
+            <div class="relative z-10">
+                <div class="mb-16 border-l-8 border-chikara-red pl-8">
+                    <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">Inclusión</span>
+                    <h1 class="text-5xl md:text-7xl font-display font-bold text-chikara-ink uppercase mt-2">Accesibi<span class="text-chikara-red">lidad</span></h1>
+                </div>
+
+                <div class="prose prose-stone max-w-none font-serif text-gray-600 leading-relaxed space-y-8">
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Nuestro Compromiso</h2>
+                        <p>Chikara Nutrition se ha comprometido a hacer accesible su sitio web, de conformidad con el Real Decreto 1112/2018, de 7 de septiembre. Queremos que el camino de la fuerza sea transitable por todos, sin barreras digitales.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Cumplimiento</h2>
+                        <p>Estamos trabajando activamente para alcanzar un nivel óptimo de accesibilidad, siguiendo las pautas WCAG 2.1 en su nivel AA. Esto incluye:</p>
+                        <ul class="list-disc pl-8 space-y-2 mt-4 italic">
+                            <li>Contraste adecuado de colores para mejorar la legibilidad.</li>
+                            <li>Navegación accesible mediante teclado.</li>
+                            <li>Compatibilidad con lectores de pantalla.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Contacto</h2>
+                        <p>Si encuentras problemas para acceder a algún contenido, no dudes en contactarnos en <span class="text-chikara-ink font-bold">access@chikaranutrition.com</span>. Tu feedback nos ayuda a forjar una web más fuerte y justa.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>

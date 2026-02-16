@@ -1,0 +1,134 @@
+---
+interface Props {
+  currentPath: string;
+  forceTransparent?: boolean;
+}
+
+const { currentPath, forceTransparent = false } = Astro.props;
+
+const isHome = currentPath === '/' || currentPath === '';
+---
+
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6 text-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo Section -->
+      <a href="/" class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+        <img 
+            id="navbar-logo" 
+            src="/imagenes/logo-chikara-nutrition-blanco.webp" 
+            alt="Chikara Nutrition" 
+            class="h-12 md:h-16 w-auto transition-opacity duration-300"
+        />
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-10">
+          <a href="/sobre-nosotros/" class="nav-link px-1 py-2 text-base font-bold transition-all uppercase tracking-widest border-b-2 border-transparent hover:border-chikara-red hover:text-white">El Origen</a>
+          <a href="/arsenal/" class="nav-link px-1 py-2 text-base font-bold transition-all uppercase tracking-widest border-b-2 border-transparent hover:border-chikara-red hover:text-white">Arsenal</a>
+          <a href="/blog/" class="nav-link px-1 py-2 text-base font-bold transition-all uppercase tracking-widest border-b-2 border-transparent hover:border-chikara-red hover:text-white">Blog</a>
+          <a href="/contacto/" id="contact-button" class="px-5 py-2 rounded-sm text-base font-bold transition-colors uppercase tracking-widest border border-white hover:bg-chikara-red hover:border-chikara-red hover:text-white">
+            Contacto
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="-mr-2 flex md:hidden">
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg id="menu-icon" class="block h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" class="hidden h-8 w-8 text-chikara-red" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 absolute w-full shadow-xl top-full">
+    <div class="px-4 pt-4 pb-6 space-y-2">
+      <a href="/sobre-nosotros/" class="w-full text-left text-chikara-stone hover:text-chikara-red hover:bg-gray-50 block px-3 py-3 rounded-sm text-lg font-display font-bold uppercase tracking-widest transition-all">EL ORIGEN</a>
+      <a href="/#arsenal" class="w-full text-left text-chikara-stone hover:text-chikara-red hover:bg-gray-50 block px-3 py-3 rounded-sm text-lg font-display font-bold uppercase tracking-widest transition-all">ARSENAL</a>
+      <a href="/blog/" class="w-full text-left text-chikara-stone hover:text-chikara-red hover:bg-gray-50 block px-3 py-3 rounded-sm text-lg font-display font-bold uppercase tracking-widest transition-all">BLOG</a>
+      <a href="/contacto/" class="w-full text-left text-white bg-chikara-red hover:bg-red-800 block px-3 py-3 rounded-sm text-lg font-display font-bold uppercase tracking-widest transition-colors mt-4 text-center">CONTACTO</a>
+    </div>
+  </div>
+</nav>
+
+<script is:inline define:vars={{ isHome, forceTransparent }}>
+  const navbar = document.getElementById('navbar');
+  const navLogo = document.getElementById('navbar-logo');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const contactButton = document.getElementById('contact-button');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  function updateNavbar() {
+    const scrolled = window.scrollY > 50;
+    const useDarkTheme = scrolled || (!isHome && !forceTransparent);
+
+    if (scrolled) {
+      navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2');
+      navbar.classList.remove('bg-transparent', 'py-6');
+    } else {
+      navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md', 'py-2');
+      navbar.classList.add('bg-transparent', 'py-6');
+    }
+
+    if (useDarkTheme) {
+      navbar.classList.add('text-chikara-ink');
+      navbar.classList.remove('text-gray-200');
+      
+      if (navLogo) navLogo.src = '/imagenes/logo-chikara-nutrition.webp';
+
+      navLinks.forEach(link => {
+        link.classList.add('hover:text-chikara-red');
+        link.classList.remove('hover:text-white');
+      });
+
+      contactButton.classList.add('border-chikara-ink', 'text-chikara-ink');
+      contactButton.classList.remove('border-white', 'text-white');
+    } else {
+      navbar.classList.remove('text-chikara-ink');
+      navbar.classList.add('text-gray-200');
+      
+      if (navLogo) navLogo.src = '/imagenes/logo-chikara-nutrition-blanco.webp';
+
+      navLinks.forEach(link => {
+        link.classList.remove('hover:text-chikara-red');
+        link.classList.add('hover:text-white');
+      });
+
+      contactButton.classList.remove('border-chikara-ink', 'text-chikara-ink');
+      contactButton.classList.add('border-white', 'text-white');
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar);
+  updateNavbar();
+
+  mobileMenuButton.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    if (isOpen) {
+      mobileMenu.classList.add('hidden');
+      menuIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+    } else {
+      mobileMenu.classList.remove('hidden');
+      menuIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }
+  });
+</script>

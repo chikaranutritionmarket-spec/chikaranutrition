@@ -1,0 +1,59 @@
+---
+const categories = [
+    { 
+        id: 1, 
+        name: "Cuerpo", 
+        kanji: "体",
+        subtitle: "Proteínas y Recuperación", 
+        img: "/imagenes/deporte-chikaranutrition.webp"
+    },
+    { 
+        id: 2, 
+        name: "Mente", 
+        kanji: "心",
+        subtitle: "Enfoque y Pre-Entreno", 
+        img: "/imagenes/mente-chikaranutrition.webp"
+    },
+    { 
+        id: 3, 
+        name: "Espíritu", 
+        kanji: "気",
+        subtitle: "Salud y Bienestar", 
+        img: "/imagenes/espiritu-chikaranutrition.webp"
+    }
+];
+---
+<section class="relative z-20 -mt-24 pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categories.map((cat) => (
+                <div class="group relative h-80 overflow-hidden cursor-pointer shadow-xl bg-white border-b-4 border-chikara-red">
+                    
+                    <!-- Image area (Top half) -->
+                    <div class="absolute top-0 w-full h-full overflow-hidden">
+                         <div 
+                            class="absolute inset-0 bg-cover bg-center transition-transform duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110 opacity-90"
+                            style={`background-image: url(${cat.img})`}
+                        ></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-chikara-ink via-transparent to-transparent opacity-80"></div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-end text-white p-8 pb-10">
+                        <div class="absolute top-4 right-6 text-6xl font-jp font-black text-white/20 group-hover:text-chikara-red/80 transition-colors duration-500">
+                            {cat.kanji}
+                        </div>
+                        
+                        <h3 class="text-3xl font-display font-bold uppercase tracking-[0.2em] relative z-10 text-shadow">
+                            {cat.name}
+                        </h3>
+                        <div class="w-12 h-1 bg-white group-hover:bg-chikara-red my-4 transition-colors duration-500"></div>
+                        <p class="text-sm font-sans font-medium tracking-wide text-gray-200">
+                            {cat.subtitle}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

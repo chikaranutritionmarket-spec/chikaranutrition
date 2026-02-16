@@ -1,0 +1,168 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import MapSection from '../../components/MapSection.astro';
+---
+
+<BaseLayout title="Sobre Nosotros | Chikara Nutrition" description="Conoce el origen de la fuerza y los pilares del clan Chikara Nutrition.">
+	<Navbar currentPath="/sobre-nosotros/" forceTransparent={true} />
+	
+	<main class="bg-chikara-paper min-h-screen">
+		<!-- Hero Section (Estilo Premium) -->
+		<div class="relative min-h-[60vh] md:min-h-[70vh] flex items-center bg-chikara-ink text-white overflow-hidden py-24 md:py-0">
+			 <!-- Background Image with Overlay -->
+			 <div class="absolute inset-0">
+				<img 
+					src="/imagenes/chikara-nutrition-tienda-ponferrada.webp" 
+					alt="Sobre Chikara" 
+					class="w-full h-full object-cover grayscale opacity-60 mix-blend-luminosity"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-r from-chikara-ink/95 via-chikara-ink/70 to-transparent"></div>
+			 </div>
+			 
+			 <!-- Decorative Kanji -->
+			 <div class="absolute right-[-5%] md:right-0 top-1/2 -translate-y-1/2 text-[15rem] xs:text-[20rem] md:text-[30rem] text-white/5 font-jp font-black leading-none pointer-events-none select-none">
+				起源
+			 </div>
+
+			 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-12 md:pt-20">
+				<div class="max-w-2xl">
+					<span class="text-chikara-red font-display font-bold tracking-[0.5em] uppercase block mb-4 animate-fade-in">Nuestra Historia</span>
+					<h1 class="text-6xl md:text-8xl font-display font-bold uppercase leading-[0.9] mb-8 animate-slide-up">
+						El Origen de <br/> la <span class="text-transparent bg-clip-text bg-gradient-to-r from-chikara-red to-white">Fuerza</span>
+					</h1>
+					<div class="w-20 h-1 bg-chikara-red mb-8"></div>
+					<p class="text-xl text-gray-300 font-light leading-relaxed max-w-xl italic font-serif">
+						Chikara no nació en una sala de juntas. Nació en el sudor del dojo y en el silencio de la última repetición.
+					</p>
+				</div>
+			 </div>
+		</div>
+
+		<!-- Story Section -->
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+			 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+				<div class="relative">
+					<div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-chikara-red"></div>
+					<img src="/imagenes/chikara-ponferrada.webp" alt="Chikara Nutrition Tienda" class="w-full grayscale contrast-125 shadow-2xl relative z-10" />
+					<div class="absolute -bottom-4 -right-4 w-24 h-24 border-b-4 border-r-4 border-chikara-red z-20"></div>
+				</div>
+				
+				<div class="space-y-6">
+					<h2 class="text-4xl font-display font-bold text-chikara-ink uppercase">No vendemos suplementos, <span class="text-chikara-red">forjamos guerreros</span></h2>
+					<p class="text-gray-600 text-lg leading-relaxed font-serif">
+						En un mundo lleno de promesas vacías y atajos, Chikara (力) se mantiene firme en los principios del Bushido. Creemos que la verdadera fuerza no reside solo en el músculo, sino en la voluntad inquebrantable de levantarse una vez más.
+					</p>
+					<p class="text-gray-600 text-lg leading-relaxed font-serif">
+						Nuestra misión es simple: proporcionar el combustible más puro para aquellos que tratan su cuerpo como un templo y su entrenamiento como un ritual sagrado.
+					</p>
+					
+					<div class="pt-8 grid grid-cols-3 gap-4 border-t border-gray-200 mt-8">
+						<div class="text-center">
+							<span class="block text-4xl font-display font-bold text-chikara-ink">10k+</span>
+							<span class="text-xs font-bold uppercase tracking-widest text-gray-400">Guerreros</span>
+						</div>
+						<div class="text-center border-l border-gray-200">
+							<span class="block text-4xl font-display font-bold text-chikara-ink">100%</span>
+							<span class="text-xs font-bold uppercase tracking-widest text-gray-400">Pureza</span>
+						</div>
+						<div class="text-center border-l border-gray-200">
+							<span class="block text-4xl font-display font-bold text-chikara-ink">0</span>
+							<span class="text-xs font-bold uppercase tracking-widest text-gray-400">Excusas</span>
+						</div>
+					</div>
+				</div>
+			 </div>
+		</div>
+
+		<!-- Values (Pilares Rediseñados) -->
+		<div class="bg-chikara-ink py-24 relative overflow-hidden">
+			<!-- Decorative Kanji background for the whole section -->
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[30rem] text-white/5 font-jp font-black leading-none pointer-events-none select-none">
+				魂
+			</div>
+
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+				<div class="text-center mb-16">
+					<h2 class="text-white font-display font-black text-4xl md:text-5xl uppercase tracking-[0.2em] mb-4">Nuestros <span class="text-chikara-red">Pilares</span></h2>
+					<div class="w-20 h-1 bg-chikara-red mx-auto"></div>
+					<p class="text-gray-400 mt-6 font-serif italic text-lg tracking-wide">El código inquebrantable que guía a cada miembro de nuestro clan.</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Honor -->
+					<div class="group relative h-[500px] overflow-hidden cursor-pointer border border-white/10 hover:border-chikara-red/50 transition-all duration-500 shadow-2xl">
+						<div class="absolute inset-0">
+							<img src="/imagenes/honor-suplementacion-deportiva.webp" alt="Honor" class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-75 transition-all duration-700" />
+							<div class="absolute inset-0 bg-gradient-to-t from-chikara-ink via-transparent to-transparent opacity-90"></div>
+						</div>
+						
+						<div class="absolute inset-0 p-10 flex flex-col justify-end">
+							<div class="absolute top-8 right-8 text-8xl font-jp font-black text-white/10 group-hover:text-chikara-red transition-colors duration-500">
+								義
+							</div>
+							<div class="relative z-10">
+								<h3 class="font-display font-black text-3xl text-white uppercase mb-4 tracking-tighter group-hover:translate-x-2 transition-transform duration-300">Honor</h3>
+								<div class="h-[2px] w-12 bg-chikara-red mb-6"></div>
+								<p class="text-gray-300 font-serif leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+									Transparencia total en nuestros ingredientes. Lo que ves en la etiqueta es lo que entra en tu cuerpo. Sin secretos.
+								</p>
+							</div>
+						</div>
+						<div class="absolute bottom-0 left-0 w-full h-1 bg-chikara-red scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+					</div>
+
+					<!-- Integridad -->
+					<div class="group relative h-[500px] overflow-hidden cursor-pointer border border-white/10 hover:border-chikara-red/50 transition-all duration-500 shadow-2xl md:-translate-y-8">
+						<div class="absolute inset-0">
+							<img src="/imagenes/bushido-disciplina-entrenamiento.webp" alt="Integridad" class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-75 transition-all duration-700" />
+							<div class="absolute inset-0 bg-gradient-to-t from-chikara-ink via-transparent to-transparent opacity-90"></div>
+						</div>
+						
+						<div class="absolute inset-0 p-10 flex flex-col justify-end">
+							<div class="absolute top-8 right-8 text-8xl font-jp font-black text-white/10 group-hover:text-chikara-red transition-colors duration-500">
+								誠
+							</div>
+							<div class="relative z-10">
+								<h3 class="font-display font-black text-3xl text-white uppercase mb-4 tracking-tighter group-hover:translate-x-2 transition-transform duration-300">Integridad</h3>
+								<div class="h-[2px] w-12 bg-chikara-red mb-6"></div>
+								<p class="text-gray-300 font-serif leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+									Calidad farmacéutica. No comprometemos la pureza por el beneficio. Solo lo mejor para el clan Chikara.
+								</p>
+							</div>
+						</div>
+						<div class="absolute bottom-0 left-0 w-full h-1 bg-chikara-red scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+					</div>
+
+					<!-- Coraje -->
+					<div class="group relative h-[500px] overflow-hidden cursor-pointer border border-white/10 hover:border-chikara-red/50 transition-all duration-500 shadow-2xl">
+						<div class="absolute inset-0">
+							<img src="/imagenes/shugyo-entrenamiento-ascetico.webp" alt="Coraje" class="w-full h-full object-cover grayscale brightness-50 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-75 transition-all duration-700" />
+							<div class="absolute inset-0 bg-gradient-to-t from-chikara-ink via-transparent to-transparent opacity-90"></div>
+						</div>
+						
+						<div class="absolute inset-0 p-10 flex flex-col justify-end">
+							<div class="absolute top-8 right-8 text-8xl font-jp font-black text-white/10 group-hover:text-chikara-red transition-colors duration-500">
+								勇
+							</div>
+							<div class="relative z-10">
+								<h3 class="font-display font-black text-3xl text-white uppercase mb-4 tracking-tighter group-hover:translate-x-2 transition-transform duration-300">Coraje</h3>
+								<div class="h-[2px] w-12 bg-chikara-red mb-6"></div>
+								<p class="text-gray-300 font-serif leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+									Innovación constante. Desafiamos los estándares de la industria para crear fórmulas superiores y efectivas.
+								</p>
+							</div>
+						</div>
+						<div class="absolute bottom-0 left-0 w-full h-1 bg-chikara-red scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Map Section -->
+		<MapSection />
+	</main>
+
+	<Footer />
+</BaseLayout>

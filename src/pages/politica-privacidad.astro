@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const title = "Política de Privacidad | Chikara Nutrition";
+const description = "Información sobre el tratamiento de tus datos personales en Chikara Nutrition.";
+---
+
+<BaseLayout title={title} description={description}>
+    <Navbar currentPath="/politica-privacidad/" />
+    
+    <main class="pt-32 pb-24 bg-chikara-paper min-h-screen">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Decorative Background Kanji -->
+            <div class="absolute -right-20 bottom-20 text-[15rem] text-gray-200 font-jp font-black leading-none pointer-events-none z-0 select-none opacity-40">
+                隠
+            </div>
+
+            <div class="relative z-10">
+                <div class="mb-16 border-l-8 border-chikara-red pl-8">
+                    <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">Privacidad</span>
+                    <h1 class="text-5xl md:text-7xl font-display font-bold text-chikara-ink uppercase mt-2">Política de <span class="text-chikara-red">Privacidad</span></h1>
+                </div>
+
+                <div class="prose prose-stone max-w-none font-serif text-gray-600 leading-relaxed space-y-8">
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">1. Tratamiento de Datos</h2>
+                        <p>Chikara Nutrition informa a los usuarios que los datos personales recogidos serán tratados de forma lícita, leal y transparente. Nos comprometemos a proteger la privacidad de nuestros guerreros en todo momento.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">2. Finalidad</h2>
+                        <p>Los datos proporcionados a través de formularios de contacto o registro se utilizarán exclusivamente para:</p>
+                        <ul class="list-disc pl-8 space-y-2 mt-4 italic">
+                            <li>Gestionar tus consultas y pedidos.</li>
+                            <li>Enviar información relevante sobre nutrición y ofertas (con tu consentimiento).</li>
+                            <li>Mejorar tu experiencia en nuestra plataforma.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">3. Tus Derechos</h2>
+                        <p>Puedes ejercer tus derechos de acceso, rectificación, supresión y portabilidad de tus datos, así como la limitación u oposición a su tratamiento, enviando un correo a <span class="text-chikara-ink font-bold">privacy@chikaranutrition.com</span>.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>
