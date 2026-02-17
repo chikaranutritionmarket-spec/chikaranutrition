@@ -4,109 +4,191 @@ import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 ---
 
-<BaseLayout title="Contacto | Chikara Nutrition" description="Contacta con el clan Chikara. Estamos aquí para asesorarte en tu camino a la fuerza.">
-    <Navbar currentPath="/contacto/" />
-    
-    <main class="pt-24 bg-chikara-paper min-h-screen">
-       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
-           
-           <div class="text-center mb-16">
-               <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">Conexión</span>
-               <h1 class="text-5xl md:text-6xl font-display font-bold text-chikara-ink uppercase mt-2">Contacta al Clan</h1>
-           </div>
+<BaseLayout 
+  title="Contacto | Chikara Nutrition" 
+  description="Contacta con Chikara Nutrition. Asesoramiento profesional en suplementación deportiva en Ponferrada.">
+  
+  <Navbar currentPath="/contacto/" />
+  
+  <main class="pt-24 bg-chikara-paper min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24">
+      
+      <div class="text-center mb-16">
+        <span class="text-chikara-red font-bold uppercase tracking-[0.3em] text-xs">
+          Conexión
+        </span>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-chikara-ink uppercase mt-2">
+          Contacta con Chikara
+        </h1>
+      </div>
 
-           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
-               <!-- Contact Form -->
-               <div class="bg-white p-8 md:p-12 shadow-xl border-t-4 border-chikara-red">
-                   <h3 class="font-display font-bold text-2xl uppercase mb-8 text-chikara-ink">Envía tu Mensaje</h3>
-                   <form class="space-y-6" name="contact" method="POST" data-netlify="true">
-                       <input type="hidden" name="form-name" value="contact" />
-                       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                           <div>
-                               <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Nombre</label>
-                               <input type="text" name="nombre" class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors" placeholder="Tu nombre" required />
-                           </div>
-                           <div>
-                               <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email</label>
-                               <input type="email" name="email" class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors" placeholder="tu@email.com" required />
-                           </div>
-                       </div>
-                       <div>
-                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Asunto</label>
-                            <select name="asunto" class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors text-gray-600">
-                                <option>Consulta General</option>
-                                <option>Asesoramiento de Producto</option>
-                                <option>Pedido</option>
-                            </select>
-                       </div>
-                       <div>
-                           <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Mensaje</label>
-                           <textarea name="mensaje" rows="5" class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors" placeholder="Escribe tu mensaje aquí..." required></textarea>
-                       </div>
-                       
-                       <button type="submit" class="w-full bg-chikara-ink text-white py-4 font-display font-bold uppercase tracking-[0.2em] hover:bg-chikara-red transition-colors flex items-center justify-center gap-2">
-                           Enviar Pergamino <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><line x1="22" x2="11" y1="2" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                       </button>
-                   </form>
-               </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
+        
+        <!-- Formulario -->
+        <div class="bg-white p-8 md:p-12 shadow-xl border-t-4 border-chikara-red">
+          <h3 class="font-display font-bold text-2xl uppercase mb-8 text-chikara-ink">
+            Envíanos tu mensaje
+          </h3>
 
-               <!-- Contact Info & Map Placeholder -->
-               <div class="flex flex-col justify-between space-y-12">
-                   <div>
-                       <h3 class="font-display font-bold text-2xl uppercase mb-8 text-chikara-ink">Cuartel General</h3>
-                       <p class="text-gray-500 mb-8 font-light">
-                           Nuestro Dojo central está abierto para aquellos que buscan orientación. Sin embargo, recomendamos concertar una cita previa.
-                       </p>
-                       
-                       <ul class="space-y-6">
-                           <li class="flex items-start gap-4">
-                               <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                               </div>
-                               <div>
-                                    <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">Dirección</h4>
-                                    <p class="text-gray-500 text-sm">Av. España, 17 (C.C. La Herrería)<br/>24402 Ponferrada, León, España</p>
-                               </div>
-                           </li>
-                           <li class="flex items-start gap-4">
-                               <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                               </div>
-                               <div>
-                                    <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">Teléfono</h4>
-                                    <p class="text-gray-500 text-sm">+34 987 41 12 00</p>
-                                    <p class="text-xs text-gray-400 mt-1">Lun-Vie: 10:00 - 20:00 | Sáb: 10:00 - 14:00</p>
-                               </div>
-                           </li>
-                           <li class="flex items-start gap-4">
-                               <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
-                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                               </div>
-                               <div>
-                                    <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">Email</h4>
-                                    <p class="text-gray-500 text-sm">info@chikaranutrition.com</p>
-                               </div>
-                           </li>
-                       </ul>
-                   </div>
+          <form class="space-y-6" name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact" />
 
-                   <!-- Map Visual (Styled) -->
-                   <div class="h-64 w-full bg-stone-200 relative overflow-hidden grayscale">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2939.364850861017!2d-6.6027910234129426!3d42.547545123235416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30bbb1fa8accff%3A0x3bd0321cac08804b!2sChikara%20Nutrition!5e0!3m2!1ses!2ses!4v1771270216555!5m2!1ses!2ses" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; opacity: 0.6" 
-                            allowfullscreen="false" 
-                            loading="lazy"
-                            class="grayscale invert hover:grayscale-0 hover:invert-0 transition-all duration-500"
-                        ></iframe>
-                       <div class="absolute inset-0 pointer-events-none border-4 border-white/50"></div>
-                   </div>
-               </div>
-           </div>
-       </div>
-    </main>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                  Nombre
+                </label>
+                <input 
+                  type="text" 
+                  name="nombre" 
+                  class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors"
+                  placeholder="Tu nombre" 
+                  required 
+                />
+              </div>
 
-    <Footer />
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                  Email
+                </label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors"
+                  placeholder="tu@email.com" 
+                  required 
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                Asunto
+              </label>
+              <select 
+                name="asunto" 
+                class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors text-gray-600">
+                <option>Consulta general</option>
+                <option>Asesoramiento de producto</option>
+                <option>Pedido</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">
+                Mensaje
+              </label>
+              <textarea 
+                name="mensaje" 
+                rows="5" 
+                class="w-full bg-stone-50 border border-gray-200 p-4 focus:outline-none focus:border-chikara-red transition-colors"
+                placeholder="Escribe tu mensaje aquí..." 
+                required>
+              </textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full bg-chikara-ink text-white py-4 font-display font-bold uppercase tracking-[0.2em] hover:bg-chikara-red transition-colors flex items-center justify-center gap-2">
+              
+              Enviar mensaje
+              
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" x2="11" y1="2" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="flex flex-col justify-between space-y-12">
+          
+          <div>
+            <h3 class="font-display font-bold text-2xl uppercase mb-8 text-chikara-ink">
+              Tienda física
+            </h3>
+
+            <p class="text-gray-500 mb-8 font-light">
+              Nuestra tienda de suplementación deportiva está ubicada dentro de Basic-Fit en Ponferrada. 
+              Puedes visitarnos directamente o escribirnos para recibir asesoramiento personalizado.
+            </p>
+
+            <ul class="space-y-6">
+              
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">
+                    Dirección
+                  </h4>
+                  <p class="text-gray-500 text-sm">
+                    Basic-Fit<br/>
+                    Av. España, 17<br/>
+                    24402 Ponferrada, León
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">
+                    Teléfono
+                  </h4>
+                  <p class="text-gray-500 text-sm">
+                    +34 694 90 69 32
+                  </p>
+                </div>
+              </li>
+
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-white border border-gray-200 flex items-center justify-center text-chikara-red">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="font-bold uppercase tracking-wide text-sm text-chikara-ink">
+                    Email
+                  </h4>
+                  <p class="text-gray-500 text-sm">
+                    info@chikaranutrition.com
+                  </p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- Mapa -->
+          <div class="h-64 w-full bg-stone-200 relative overflow-hidden grayscale">
+          <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2939.364850861017!2d-6.6027910234129426!3d42.547545123235416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd30bbb1fa8accff%3A0x3bd0321cac08804b!2sChikara%20Nutrition!5e0!3m2!1ses!2ses!4v1771270216555!5m2!1ses!2ses" 
+              width="100%" 
+              height="100%" 
+              style="border:0; opacity: 0.6" 
+              allowfullscreen="false" 
+              loading="lazy"
+              class="grayscale invert hover:grayscale-0 hover:invert-0 transition-all duration-500"
+          ></iframe>
+            <div class="absolute inset-0 pointer-events-none border-4 border-white/50"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
 </BaseLayout>
