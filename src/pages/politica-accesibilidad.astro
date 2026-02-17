@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 
 const title = "Política de Accesibilidad | Chikara Nutrition";
-const description = "Compromiso de Chikara Nutrition con la accesibilidad web.";
+const description = "Compromiso de Chikara Nutrition con la accesibilidad web, velocidad y compatibilidad.";
 ---
 
 <BaseLayout title={title} description={description}>
@@ -26,22 +26,43 @@ const description = "Compromiso de Chikara Nutrition con la accesibilidad web.";
                 <div class="prose prose-stone max-w-none font-serif text-gray-600 leading-relaxed space-y-8">
                     <section>
                         <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Nuestro Compromiso</h2>
-                        <p>Chikara Nutrition se ha comprometido a hacer accesible su sitio web, de conformidad con el Real Decreto 1112/2018, de 7 de septiembre. Queremos que el camino de la fuerza sea transitable por todos, sin barreras digitales.</p>
+                        <p>En Chikara Nutrition creemos que el camino de la fuerza debe ser transitable por todos. Nos hemos comprometido a hacer accesible nuestro sitio web, de conformidad con el Real Decreto 1112/2018, de 7 de septiembre, sobre accesibilidad de los sitios web y aplicaciones para dispositivos móviles del sector público (aplicado aquí por voluntad de servicio y calidad).</p>
                     </section>
 
                     <section>
-                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Cumplimiento</h2>
-                        <p>Estamos trabajando activamente para alcanzar un nivel óptimo de accesibilidad, siguiendo las pautas WCAG 2.1 en su nivel AA. Esto incluye:</p>
-                        <ul class="list-disc pl-8 space-y-2 mt-4 italic">
-                            <li>Contraste adecuado de colores para mejorar la legibilidad.</li>
-                            <li>Navegación accesible mediante teclado.</li>
-                            <li>Compatibilidad con lectores de pantalla.</li>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Tecnología y Rendimiento</h2>
+                        <p>Para garantizar la máxima accesibilidad y universalidad, este sitio web ha sido desarrollado utilizando tecnologías de vanguardia:</p>
+                        <ul class="list-disc pl-5 space-y-4 mt-4">
+                            <li><strong>Arquitectura Astro:</strong> Construido sobre el framework <strong>Astro</strong>, lo que nos permite generar un sitio web <strong>completamente estático</strong>. Esto elimina la carga de procesamiento en el dispositivo del usuario, garantizando una compatibilidad total con navegadores antiguos y tecnologías de asistencia.</li>
+                            <li><strong>Velocidad Extrema:</strong> Al servir HTML puro y CSS optimizado, la web carga instantáneamente. Esto no solo mejora la experiencia de usuario, sino que es una característica de accesibilidad crítica para personas con conexiones lentas a internet o dispositivos con recursos limitados.</li>
+                            <li><strong>HTML Semántico:</strong> Hemos cuidado cada etiqueta para asegurar que la estructura (encabezados, regiones, listas) sea plenamente interpretable por lectores de pantalla y otros asistentes de navegación.</li>
                         </ul>
                     </section>
 
                     <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Estándares de Cumplimiento</h2>
+                        <p>Trabajamos continuamente para cumplir con las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 en su nivel AA. Nuestras medidas incluyen:</p>
+                        <ul class="list-disc pl-5 space-y-2 mt-4 italic">
+                            <li>Contraste de color suficiente entre texto y fondo.</li>
+                            <li>Texto redimensionable sin pérdida de funcionalidad.</li>
+                            <li>Navegación completa mediante teclado (sin necesidad de ratón).</li>
+                            <li>Alternativas textuales para todo el contenido no textual (imágenes, iconos).</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Situación de Cumplimiento</h2>
+                        <p>Este sitio web es <strong>parcialmente conforme</strong> con el RD 1112/2018 debido a las excepciones y a la falta de conformidad de los aspectos que se indican a continuación (si los hubiere en futuras auditorías). Actualmente, no tenemos constancia de fallos críticos de accesibilidad.</p>
+                    </section>
+
+                    <section>
                         <h2 class="text-2xl font-display font-bold text-chikara-ink uppercase mb-4">Contacto</h2>
-                        <p>Si encuentras problemas para acceder a algún contenido, no dudes en contactarnos en <span class="text-chikara-ink font-bold">access@chikaranutrition.com</span>. Tu feedback nos ayuda a forjar una web más fuerte y justa.</p>
+                        <p>La accesibilidad es un proceso continuo. Si encuentras barreras de acceso o tienes sugerencias para mejorar, por favor contacta con nuestro equipo:</p>
+                        <ul class="list-none pl-0 space-y-2 mt-4 text-chikara-ink font-bold border-l-4 border-chikara-red pl-4 py-2 bg-stone-50">
+                            <li><span class="text-gray-500 uppercase tracking-wider text-xs block mb-1">Responsable</span> ALEJANDRO POMBO SANTOS</li>
+                            <li><span class="text-gray-500 uppercase tracking-wider text-xs block mb-1 mt-3">Email</span> info@chikaranutrition.com</li>
+                            <li><span class="text-gray-500 uppercase tracking-wider text-xs block mb-1 mt-3">Teléfono</span> 694 90 69 32</li>
+                        </ul>
                     </section>
                 </div>
             </div>

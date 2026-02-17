@@ -10,47 +10,67 @@ const CATEGORIES = [
     name: "Proteínas",
     jpName: "タンパク質",
     description: "La base de la reconstrucción muscular. Disponemos de aislados (Isolate), concentrados (Whey) e hidrolizados de la más alta pureza biológica.",
-    brands: ["Amix", "LifePro", "BioTechUSA", "Optimum Nutrition"],
-    image: "/imagenes/proteinas.webp",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"></path><path d="m10 10 5.5 5.5"></path><path d="m3 21 2.5-2.5"></path><path d="m3 21 2.5-2.5"></path><path d="m18.5 5.5 2.5-2.5"></path><path d="m11 21 2-2"></path><path d="m21 11-2 2"></path><path d="m22 2-5 5"></path><path d="m7 17-5 5"></path></svg>`
+    brands: ["Amix", "LifePro", "Optimum Nutrition", "226ERS", "Big"],
+    image: "/imagenes/proteinas.webp"
   },
   {
     id: 2,
     name: "Creatina & Fuerza",
     jpName: "力",
-    description: "Potencia explosiva para romper tus límites. Creatina Monohidrato Creapure® para asegurar la máxima absorción y rendimiento.",
-    brands: ["Chikara Labs", "Amix", "Zoomad Labs"],
-    image: "/imagenes/creatina.webp",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.71V21h6.29l1.62-1.62L3.62 11.09 4 14.71z"></path><path d="M14.71 4l1.62 1.62L4.71 17.25l-1.62-1.62L14.71 4z"></path><path d="M21 4.71L19.38 3.09 7.75 14.71l1.62 1.62L21 4.71z"></path><path d="M16.29 4L4.71 15.59 4 19.41l3.82-.71L19.41 7.12 16.29 4z"></path></svg>`
+    description: "Potencia explosiva para romper tus límites. Creatina monohidrato y fórmulas avanzadas para maximizar rendimiento y capacidad de carga.",
+    brands: ["Amix", "Zoomad", "Optimum Nutrition", "All Nutrition", "Big"],
+    image: "/imagenes/creatina.webp"
   },
   {
     id: 3,
     name: "Salud & Vitaminas",
     jpName: "健康",
-    description: "Un guerrero enfermo no puede luchar. Multivitamínicos, Omega-3, ZMA y protectores articulares para mantener tu armadura intacta.",
-    brands: ["LifePro", "Now Foods", "Solaray"],
-    image: "/imagenes/vitaminas-minerales.webp",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>`
+    description: "Un guerrero enfermo no puede luchar. Multivitamínicos, omega-3, minerales esenciales y soporte inmunológico.",
+    brands: ["LifePro", "Himalaya", "Drasanvi", "Plameca", "Nutrinovex"],
+    image: "/imagenes/vitaminas-minerales.webp"
   },
   {
     id: 4,
     name: "Pre-Entreno",
     jpName: "エネルギー",
-    description: "Enciende la mecha. Fórmulas con estimulantes y nootrópicos para una concentración láser y energía inagotable durante la batalla.",
-    brands: ["Cellucor", "Chikara Labs", "Zoomad"],
-    image: "/imagenes/preentrenos.webp",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" x2="6" y1="2" y2="4"></line><line x1="10" x2="10" y1="2" y2="4"></line><line x1="14" x2="14" y1="2" y2="4"></line></svg>`
+    description: "Enciende la mecha. Fórmulas con estimulantes, beta-alanina y nootrópicos para energía sostenida y enfoque total.",
+    brands: ["C4 Energy", "Amix", "Zoomad", "BSN", "Quamtrax"],
+    image: "/imagenes/preentrenos.webp"
   },
   {
     id: 5,
     name: "Snacks Saludables",
     jpName: "スナック",
-    description: "Placer sin culpa. Barritas proteicas, cremas de arroz, salsas cero calorías y caprichos fit para mantener la dieta sin sufrir.",
-    brands: ["LifePro Fit Food", "Max Protein", "Servivita"],
-    image: "/imagenes/snacks.webp",
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><path d="M8.5 8.5v.01"></path><path d="M16 15.5v.01"></path><path d="M12 12v.01"></path><path d="M11 17v.01"></path><path d="M7 14v.01"></path></svg>`
+    description: "Placer sin culpa. Barritas proteicas, salsas cero y alternativas funcionales para mantener la dieta sin sacrificar sabor.",
+    brands: ["Barebells", "Max Protein", "Servivita", "Vitadulce", "LifePro"],
+    image: "/imagenes/snacks-fitness.webp"
+  },
+  {
+    id: 6,
+    name: "Aminoácidos & Recuperación",
+    jpName: "回復",
+    description: "BCAA, EAA y glutamina para acelerar la síntesis proteica y reducir el daño muscular tras sesiones de alta intensidad.",
+    brands: ["Amix", "Optimum Nutrition", "Nutrinovex", "QNT", "Zoomad"],
+    image: "/imagenes/aminoacidos.webp"
+  },
+  {
+    id: 7,
+    name: "Bebidas Energéticas",
+    jpName: "覚醒",
+    description: "Activación inmediata. Bebidas funcionales para entrenamientos exigentes o picos de concentración.",
+    brands: ["Monster", "C4 Energy", "226ERS", "Nutrinovex", "BSN"],
+    image: "/imagenes/bebidas-energeticas.webp"
+  },
+  {
+    id: 8,
+    name: "Control de Peso & Bienestar",
+    jpName: "調整",
+    description: "Definición, metabolismo y equilibrio interno. Termogénicos, sustitutivos y soporte digestivo.",
+    brands: ["All Nutrition", "Drasanvi", "Plameca", "LifePro", "Servivita"],
+    image: "/imagenes/control-peso.webp"
   }
 ];
+
 ---
 
 <BaseLayout title="El Arsenal | Chikara Nutrition" description="Explora nuestras herramientas para la transformación física: suplementación de élite seleccionada por expertos.">
@@ -78,7 +98,7 @@ const CATEGORIES = [
                 <div class="max-w-2xl">
                     <span class="text-chikara-red font-display font-bold tracking-[0.5em] uppercase block mb-4 animate-fade-in">Herramientas de Élite</span>
                     <h1 class="text-6xl md:text-8xl font-display font-bold uppercase leading-[0.9] mb-8 animate-slide-up">
-                        El <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-chikara-red to-white">Arsenal</span>
+                        El <br/> <span class="text-chikara-red">Arsenal</span>
                     </h1>
                     <div class="w-20 h-1 bg-chikara-red mb-8"></div>
                     <p class="text-xl text-gray-300 font-light leading-relaxed max-w-xl italic font-serif">
@@ -131,7 +151,7 @@ const CATEGORIES = [
                             </h4>
                             <div class="h-[2px] w-0 bg-chikara-red group-hover:w-12 transition-all duration-500 mb-2"></div>
                             <span class="text-xs text-gray-400 uppercase tracking-widest flex items-center gap-1 group-hover:text-white transition-colors">
-                                Ver detalles <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"></path></svg>
+                                Ver detalles
                             </span>
                         </div>
                     </div>
@@ -142,7 +162,7 @@ const CATEGORIES = [
               <a href="/contacto/" class="group relative h-80 bg-stone-100 flex flex-col items-center justify-center border-2 border-dashed border-gray-300 hover:border-chikara-ink cursor-pointer transition-colors px-6">
                  <div class="text-center">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:bg-chikara-red group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        <span class="font-jp text-2xl">信</span>
                     </div>
                     <p class="font-display font-bold text-2xl text-chikara-ink uppercase mb-2">Asesoría Samurái</p>
                     <p class="text-gray-500 font-serif italic mb-6">¿Dudas sobre qué armas elegir? Consúltanos directamente.</p>
@@ -177,14 +197,10 @@ const CATEGORIES = [
                       
                       <p id="modal-description" class="text-gray-600 font-serif text-lg leading-relaxed mb-8 flex-grow"></p>
 
-                      <div class="mb-8">
-                          <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-2">Marcas Disponibles</h4>
+                      <div class="mb-4 flex-grow">
+                          <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-2">Marcas Disponibles</p>
                           <div id="modal-brands" class="flex flex-wrap gap-2"></div>
                       </div>
-
-                      <a href="/contacto/" class="w-full bg-chikara-ink text-white py-4 font-display font-bold uppercase tracking-widest text-center hover:bg-chikara-red transition-colors flex justify-center items-center gap-2">
-                          Consultar Disponibilidad <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                      </a>
                   </div>
               </div>
           </div>
